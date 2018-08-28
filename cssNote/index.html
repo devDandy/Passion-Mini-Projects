@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Note</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins:700" rel="stylesheet">
+
+	<style>
+
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+		body {
+			background: #ffd600;
+			position: relative;
+			height: 100vh;
+		}
+
+
+		.picture-frame {
+			position: relative;
+			top: 50%;
+			left: 50%;
+			width: 500px;
+			height: 500px;
+			background: white;
+			margin: -250px 0 0 -250px;
+			box-shadow: -5px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		.picture-frame-tape {
+			position: absolute;
+			width: 75px;
+			height: 200px;
+			background: white;
+    		-ms-transform: rotate(55deg); /* IE 9 */
+    		-webkit-transform: rotate(55deg); /* Safari 3-8 */
+    		transform: rotate(55deg);
+    		opacity: 0.4;
+		}
+
+		.picture-frame-tape:before {
+			display: block;
+			content: "";
+ 			position: absolute;
+ 			bottom: 0; /*This is cruical because this will force it to the bottom */
+			width: 100%;
+			height: 20px;
+			background: linear-gradient(
+           		-45deg, transparent 33.33%,
+           		#ffd600 33.33%, #ffd600 66.66%,
+           		transparent 66.66%
+				),
+			linear-gradient(
+           		45deg, transparent 33.33%,
+           		#ffd600 33.33%, #ffd600 66.66%,
+           		transparent 66.66%
+				);
+			background-size: 20px 40px ;
+			/* transform: rotateX(-180deg);  */
+			/*Somehow this WILL NOT work with the transform on the :before but its required on the :after. Must have something to do bottom property*/
+		}
+		.picture-frame-tape:after {
+			display: block;
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 20px;
+			background: linear-gradient(
+           		-45deg, transparent 33.33%,
+           		#ffd600 33.33%, #ffd600 66.66%,
+           		transparent 66.66%
+				),
+			linear-gradient(
+           		45deg, transparent 33.33%,
+           		#ffd600 33.33%, #ffd600 66.66%,
+           		transparent 66.66%
+				);
+			background-size: 19px 40px ;
+			transform: rotateX(-180deg);
+		}
+		.top-tape {
+			top: -97px;
+			left: -16px;
+			z-index: 2;
+		}
+		.bottom-tape {
+			bottom: -97px;
+			right: -16px;
+		}
+
+		.picture-frame-picture {
+			display: inline-block;
+			position: relative;
+			width: 100%;
+			height: 75%;
+			background: #263238;
+			border: 25px solid white;
+			z-index: 1;
+		}
+
+		.picture-frame-picture img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 256px;
+			height: 256px;
+
+			margin: -128px 0 0 -128px ;
+		}
+
+		.picture-frame-text {
+			font-family: Poppins, sans-serif;
+			letter-spacing: 0.7px;
+			text-align: center;
+		}
+		.lead {
+			color: #6d6d6d;
+		}
+	</style>
+</head>
+<body>
+		<div class="picture-frame">
+			<div class="picture-frame-tape top-tape"></div>
+			<div class="picture-frame-picture">
+				<img src="https://lh5.googleusercontent.com/QRDbAvgbTd9FOkHn7t432IqKmVLVT315KHEDn4DPjlkiPK4QWv7Qse4sRShXWbG-W3hEizBPD_YbCENsAZvL=w1920-h1086" >
+			</div>
+			<div class="picture-frame-text">
+				<h1>Daniel Schneider</h1>
+				<p class="lead">Web Developer</p>
+			</div>
+			<div class="picture-frame-tape bottom-tape"></div>
+		</div>
+</body>
+</html>
